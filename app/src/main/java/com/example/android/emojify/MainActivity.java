@@ -30,6 +30,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -42,6 +43,7 @@ import java.io.IOException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         // TODO (2): Set up Timber
+            Timber.plant(new Timber.DebugTree());
     }
 
     /**
@@ -235,4 +238,6 @@ public class MainActivity extends AppCompatActivity {
         // Delete the temporary image file
         BitmapUtils.deleteImageFile(this, mTempPhotoPath);
     }
+
+
 }

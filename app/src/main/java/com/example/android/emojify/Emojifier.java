@@ -28,6 +28,8 @@ import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
 
+import timber.log.Timber;
+
 class Emojifier {
 
     // TODO (3): Change all Log statements to Timber logs and remove the LOG_TAG variable
@@ -59,7 +61,8 @@ class Emojifier {
         SparseArray<Face> faces = detector.detect(frame);
 
         // Log the number of faces
-        Log.d(LOG_TAG, "detectFaces: number of faces = " + faces.size());
+        //Log.d(LOG_TAG, "detectFaces: number of faces = " + faces.size());
+        Timber.d("detectFaces: number of faces = " + faces.size());
 
         // Initialize result bitmap to original picture
         Bitmap resultBitmap = picture;
@@ -134,10 +137,15 @@ class Emojifier {
 
     private static Emoji whichEmoji(Face face) {
         // Log all the probabilities
-        Log.d(LOG_TAG, "whichEmoji: smilingProb = " + face.getIsSmilingProbability());
-        Log.d(LOG_TAG, "whichEmoji: leftEyeOpenProb = "
+       // Log.d(LOG_TAG, "whichEmoji: smilingProb = " + face.getIsSmilingProbability());
+        Timber.d("whichEmoji: smilingProb = " + face.getIsSmilingProbability());
+        //Log.d(LOG_TAG, "whichEmoji: leftEyeOpenProb = "
+         //       + face.getIsLeftEyeOpenProbability());
+        Timber.d("whichEmoji: leftEyeOpenProb = "
                 + face.getIsLeftEyeOpenProbability());
-        Log.d(LOG_TAG, "whichEmoji: rightEyeOpenProb = "
+        //Log.d(LOG_TAG, "whichEmoji: rightEyeOpenProb = "
+        //        + face.getIsRightEyeOpenProbability());
+        Timber.d("whichEmoji: rightEyeOpenProb = "
                 + face.getIsRightEyeOpenProbability());
 
 
